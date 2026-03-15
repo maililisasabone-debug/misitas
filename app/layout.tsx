@@ -3,6 +3,8 @@ import { Fraunces, Nunito, Caveat, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { CartProvider } from "@/context/CartContext";
+import CartDrawer from "@/components/CartDrawer";
 
 // Speelse serif voor headings (karaktervol, warm, modern)
 const fraunces = Fraunces({
@@ -46,9 +48,12 @@ export default function RootLayout({
   return (
     <html lang="nl" className={`${fraunces.variable} ${nunito.variable} ${caveat.variable} ${bebas.variable}`}>
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <CartProvider>
+          <Navbar />
+          <CartDrawer />
+          <main>{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

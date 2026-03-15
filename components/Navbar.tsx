@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ShoppingBag, Menu, X, Search, User, ChevronDown } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 const categories = [
   { name: "Earrings", image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=200&q=80" },
@@ -14,6 +15,7 @@ const categories = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { cartCount, setCartOpen } = useCart();
 
   return (
     <>
@@ -59,13 +61,27 @@ export default function Navbar() {
             <div className="flex items-center gap-4 text-soft-gray">
               <button className="hover:text-ink transition-colors"><Search size={16} /></button>
               <button className="hover:text-ink transition-colors"><User size={16} /></button>
-              <button className="hover:text-ink transition-colors"><ShoppingBag size={16} /></button>
+              <button onClick={() => setCartOpen(true)} className="hover:text-ink transition-colors relative">
+                <ShoppingBag size={16} />
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-terracotta text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-body">
+                    {cartCount}
+                  </span>
+                )}
+              </button>
             </div>
           </div>
 
           {/* Mobile */}
           <div className="md:hidden flex items-center gap-4 ml-auto">
-            <button className="text-soft-gray"><ShoppingBag size={16} /></button>
+            <button onClick={() => setCartOpen(true)} className="text-soft-gray relative">
+              <ShoppingBag size={16} />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-terracotta text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-body">
+                  {cartCount}
+                </span>
+              )}
+            </button>
             <button onClick={() => setMenuOpen(!menuOpen)} className="text-ink">
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
