@@ -35,18 +35,18 @@ export default function HomePage() {
 
       {/* HERO */}
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[88vh]">
-        {/* Left: product image with playful pink bg */}
-        <div className="relative bg-[#FFE8F7] flex items-center justify-center p-12 overflow-hidden">
-          {/* Decorative dots */}
-          <div className="absolute top-8 right-8 w-4 h-4 rounded-full bg-lime opacity-70" />
-          <div className="absolute bottom-12 left-8 w-6 h-6 rounded-full bg-orange opacity-60" />
-          <div className="absolute top-1/3 left-4 w-3 h-3 rounded-full bg-purple opacity-50" />
+        {/* Left: product image with warm cream bg */}
+        <div className="relative bg-cream flex items-center justify-center p-12 overflow-hidden">
+          {/* Soft decorative dots */}
+          <div className="absolute top-8 right-8 w-4 h-4 rounded-full bg-blush opacity-40" />
+          <div className="absolute bottom-12 left-8 w-6 h-6 rounded-full bg-terracotta opacity-30" />
+          <div className="absolute top-1/3 left-4 w-3 h-3 rounded-full bg-caramel opacity-40" />
 
           {/* Side ghost images */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 opacity-30 -translate-x-1/3">
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 opacity-20 -translate-x-1/3">
             <img src="https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=300&q=80" alt="" className="w-40 rounded-sm" />
           </div>
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-30 translate-x-1/3">
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-20 translate-x-1/3">
             <img src="https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=300&q=80" alt="" className="w-40 rounded-sm" />
           </div>
 
@@ -59,9 +59,9 @@ export default function HomePage() {
         </div>
 
         {/* Right: text */}
-        <div className="flex flex-col justify-center px-10 md:px-16 py-16 bg-white">
+        <div className="flex flex-col justify-center px-10 md:px-16 py-16 bg-warm-white">
           {/* Script accent */}
-          <p className="font-script text-2xl text-pink mb-3">gevonden met liefde ✦</p>
+          <p className="font-script text-2xl text-blush mb-3">gevonden met liefde ✦</p>
 
           <h1 className="font-heading text-4xl md:text-5xl text-ink leading-tight mb-6" style={{ fontStyle: 'italic' }}>
             Poetic nostalgia<br />right on your wrist
@@ -81,14 +81,14 @@ export default function HomePage() {
                 { num: "03", text: "Breng het stuk naar huis" },
               ].map((step) => (
                 <div key={step.num} className="flex items-start gap-4">
-                  <span className="font-script text-xl text-pink flex-shrink-0 leading-tight">{step.num}</span>
+                  <span className="font-script text-xl text-blush flex-shrink-0 leading-tight">{step.num}</span>
                   <p className="font-body text-sm text-ink leading-snug">{step.text}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <Link href="/shop" className="bg-ink text-white font-body text-xs tracking-widest uppercase py-4 px-10 hover:bg-pink transition-colors text-center w-fit rounded-sm">
+          <Link href="/shop" className="bg-ink text-warm-white font-body text-xs tracking-widest uppercase py-4 px-10 hover:bg-terracotta transition-colors text-center w-fit rounded-sm">
             EXPLORE COLLECTION
           </Link>
         </div>
@@ -98,9 +98,9 @@ export default function HomePage() {
       <TickerBanner />
 
       {/* SOCIAL PROOF */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-16 px-6 bg-warm-white">
         <div className="max-w-7xl mx-auto">
-          <p className="font-script text-3xl text-center text-pink mb-10">wat anderen zeggen ✦</p>
+          <p className="font-script text-3xl text-center text-blush mb-10">wat anderen zeggen ✦</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {socialProof.map((item, i) => (
               <div key={i} className="relative group overflow-hidden rounded-sm">
@@ -123,18 +123,18 @@ export default function HomePage() {
           <h2 className="font-heading text-3xl md:text-4xl text-center text-ink mb-3" style={{ fontStyle: 'italic' }}>
             The perfect gift with a love one...
           </h2>
-          <p className="font-script text-2xl text-center text-orange mb-16">or just to treat yourself! ✦</p>
+          <p className="font-script text-2xl text-center text-caramel mb-16">or just to treat yourself! ✦</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
             <div className="flex flex-col items-center text-center">
-              <div className="w-52 h-52 overflow-hidden bg-[#FFE8F7] rounded-sm mb-6 relative">
+              <div className="w-52 h-52 overflow-hidden bg-sand rounded-sm mb-6 relative">
                 <img src="https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=400&q=80" alt="Gift" className="w-full h-full object-cover" />
               </div>
               <h3 className="font-heading text-xl text-ink mb-3">Geef een curated object cadeau</h3>
               <p className="font-body text-sm text-soft-gray leading-relaxed mb-6">
                 Koop het object online en wij versturen het als een mooi cadeau. Perfect voor elke gelegenheid.
               </p>
-              <Link href="/shop" className="bg-ink text-white font-body text-xs tracking-widest uppercase py-3 px-8 hover:bg-pink transition-colors rounded-sm">
+              <Link href="/shop" className="bg-ink text-warm-white font-body text-xs tracking-widest uppercase py-3 px-8 hover:bg-terracotta transition-colors rounded-sm">
                 BUY A GIFT VOUCHER
               </Link>
             </div>
@@ -148,7 +148,7 @@ export default function HomePage() {
               <p className="font-body text-sm text-soft-gray leading-relaxed mb-6">
                 Weet je precies wat je wil? Koop het direct online. Nog niet zeker? Neem contact op — we helpen je het perfecte stuk vinden.
               </p>
-              <Link href="/shop" className="bg-orange text-white font-body text-xs tracking-widest uppercase py-3 px-8 hover:bg-ink transition-colors rounded-sm">
+              <Link href="/shop" className="bg-terracotta text-white font-body text-xs tracking-widest uppercase py-3 px-8 hover:bg-ink transition-colors rounded-sm">
                 SHOP NOW
               </Link>
             </div>
@@ -157,15 +157,15 @@ export default function HomePage() {
       </section>
 
       {/* CHOOSE YOUR STARTER PIECE */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-warm-white">
         <div className="max-w-7xl mx-auto">
-          <p className="font-script text-2xl text-purple text-center mb-2">begin hier ✦</p>
+          <p className="font-script text-2xl text-caramel text-center mb-2">begin hier ✦</p>
           <h2 className="font-heading text-3xl text-center text-ink mb-14">
             Choose your starter piece!
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {starterPieces.map((piece, i) => {
-              const colors = ["#FFE8F7", "#FFF0E8", "#F0E8FF", "#EFFFCE"];
+              const colors = ["#F5EFE6", "#EDE4D8", "#F0E8E0", "#E8DDD4"];
               return (
                 <Link key={piece.id} href={`/shop/${piece.id}`} className="group text-center hover-lift">
                   <div className="aspect-square overflow-hidden rounded-sm mb-4 relative" style={{ backgroundColor: colors[i] }}>
@@ -181,7 +181,7 @@ export default function HomePage() {
       </section>
 
       {/* CHOOSE YOUR OBJECTS */}
-      <section className="py-20 px-6 bg-[#EFFFCE]">
+      <section className="py-20 px-6 bg-sand">
         <div className="max-w-7xl mx-auto">
           <p className="font-script text-2xl text-ink text-center mb-2">jouw stijl ✦</p>
           <h2 className="font-heading text-3xl text-center text-ink mb-4">
@@ -192,7 +192,7 @@ export default function HomePage() {
           <div className="grid grid-cols-3 md:grid-cols-9 gap-3">
             {objects.map((img, i) => (
               <Link key={i} href="/shop" className="group text-center hover-lift">
-                <div className="aspect-square overflow-hidden bg-white border-2 border-transparent group-hover:border-pink transition-colors rounded-sm">
+                <div className="aspect-square overflow-hidden bg-cream border-2 border-transparent group-hover:border-blush transition-colors rounded-sm">
                   <img src={img} alt={`#${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <p className="font-body text-xs text-soft-gray mt-1">#{i + 1}</p>
@@ -212,12 +212,12 @@ export default function HomePage() {
       <FAQSection />
 
       {/* SOCIAL FEED */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-16 px-6 bg-warm-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-heading text-2xl text-center text-ink mb-2">
             Share your
           </h2>
-          <p className="font-script text-3xl text-pink text-center mb-10">#Misitas ✦</p>
+          <p className="font-script text-3xl text-blush text-center mb-10">#Misitas ✦</p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
             {[
               "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&q=80",

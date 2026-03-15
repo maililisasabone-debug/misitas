@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <>
       {/* Announcement bar */}
-      <div className="bg-pink text-white text-center text-xs py-2 tracking-widest font-body font-semibold">
+      <div className="bg-ink text-warm-white text-center text-xs py-2 tracking-widest font-body font-semibold">
         Nieuwe klanten besparen 10% met code <span className="underline underline-offset-2">MISITAS10</span>
       </div>
 
@@ -48,7 +48,7 @@ export default function Navbar() {
           </nav>
 
           {/* Logo — speels script font */}
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2 font-script text-3xl text-ink hover:text-pink transition-colors" style={{ letterSpacing: '0.05em' }}>
+          <Link href="/" className="absolute left-1/2 -translate-x-1/2 font-script text-3xl text-ink hover:text-blush transition-colors" style={{ letterSpacing: '0.05em' }}>
             Misitas
           </Link>
 
