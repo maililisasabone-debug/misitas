@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ShoppingBag, Menu, X, Search, User, ChevronDown } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { useCustomer } from "@/context/CustomerContext";
 
 const categories = [
   { name: "Earrings", image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=200&q=80" },
@@ -16,6 +17,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { cartCount, setCartOpen } = useCart();
+  const { customer } = useCustomer();
 
   return (
     <>
@@ -60,7 +62,9 @@ export default function Navbar() {
             <Link href="/become-a-curator" className="text-xs tracking-widest uppercase font-body text-soft-gray hover:text-ink transition-colors">Contact</Link>
             <div className="flex items-center gap-4 text-soft-gray">
               <button className="hover:text-ink transition-colors"><Search size={16} /></button>
-              <button className="hover:text-ink transition-colors"><User size={16} /></button>
+              <Link href={customer ? "/account" : "/account/login"} className="hover:text-ink transition-colors">
+                <User size={16} />
+              </Link>
               <button onClick={() => setCartOpen(true)} className="hover:text-ink transition-colors relative">
                 <ShoppingBag size={16} />
                 {cartCount > 0 && (

@@ -168,3 +168,96 @@ export async function removeFromCart(cartId: string, lineId: string): Promise<Ca
 export function formatPrice(amount: string, currencyCode: string): string {
   return new Intl.NumberFormat("nl-NL", { style: "currency", currency: currencyCode }).format(parseFloat(amount));
 }
+
+// ─── Customer ─────────────────────────────────────────────────────────────────
+
+export type Customer = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  orders: {
+    edges: {
+      node: {
+        id: string;
+        orderNumber: number;
+        processedAt: string;
+        financialStatus: string;
+        fulfillmentStatus: string;
+        currentTotalPrice: { amount: string; currencyCode: string };
+        lineItems: { edges: { node: { title: string; quantity: number } }[] };
+      };
+    }[];
+  };
+};
+
+export async function customerCreate(
+  email: string, password: string, firstName: string, lastName: string
+): Promise<{ customer: Customer | null; errors: string[] }> {
+  const data = await shopifyFetch<{
+    customerCreate: { customer: Customer | null; customerUserErrors: { message: string }[] };
+  }>(`
+    mutation CustomerCreate($input: CustomerCreateInput!) {
+      customerCreate(input: $input) {
+        customer { id firstName lastName email }
+        customerUserErrors { message }
+      }
+    }
+  `, { input: { email, password, firstName, lastName } });
+  return {
+    customer: data.customerCreate.customer,
+    errors: data.customerCreate.customerUserErrors.map((e) => e.message),
+  };
+}
+
+export async function customerLogin(
+  email: string, password: string
+): Promise<{ token: string | null; errors: string[] }> {
+  const data = await shopifyFetch<{
+    customerAccessTokenCreate: {
+      customerAccessToken: { accessToken: string } | null;
+      customerUserErrors: { message: string }[];
+    };
+  }>(`
+    mutation CustomerLogin($input: CustomerAccessTokenCreateInput!) {
+      customerAccessTokenCreate(input: $input) {
+        customerAccessToken { accessToken }
+        customerUserErrors { message }
+      }
+    }
+  `, { input: { email, password } });
+  return {
+    token: data.customerAccessTokenCreate.customerAccessToken?.accessToken ?? null,
+    errors: data.customerAccessTokenCreate.customerUserErrors.map((e) => e.message),
+  };
+}
+
+export async function customerLogout(token: string): Promise<void> {
+  await shopifyFetch(`
+    mutation CustomerLogout($token: String!) {
+      customerAccessTokenDelete(customerAccessToken: $token) {
+        deletedAccessToken
+      }
+    }
+  `, { token });
+}
+
+export async function getCustomer(token: string): Promise<Customer | null> {
+  const data = await shopifyFetch<{ customer: Customer | null }>(`
+    query GetCustomer($token: String!) {
+      customer(customerAccessToken: $token) {
+        id firstName lastName email
+        orders(first: 10, sortKey: PROCESSED_AT, reverse: true) {
+          edges {
+            node {
+              id orderNumber processedAt financialStatus fulfillmentStatus
+              currentTotalPrice { amount currencyCode }
+              lineItems(first: 5) { edges { node { title quantity } } }
+            }
+          }
+        }
+      }
+    }
+  `, { token });
+  return data.customer;
+}

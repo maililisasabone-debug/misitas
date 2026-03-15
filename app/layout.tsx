@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
+import { CustomerProvider } from "@/context/CustomerContext";
 import CartDrawer from "@/components/CartDrawer";
 
 // Speelse serif voor headings (karaktervol, warm, modern)
@@ -48,12 +49,14 @@ export default function RootLayout({
   return (
     <html lang="nl" className={`${fraunces.variable} ${nunito.variable} ${caveat.variable} ${bebas.variable}`}>
       <body>
-        <CartProvider>
-          <Navbar />
-          <CartDrawer />
-          <main>{children}</main>
-          <Footer />
-        </CartProvider>
+        <CustomerProvider>
+          <CartProvider>
+            <Navbar />
+            <CartDrawer />
+            <main>{children}</main>
+            <Footer />
+          </CartProvider>
+        </CustomerProvider>
       </body>
     </html>
   );
