@@ -8,26 +8,41 @@ html { scroll-behavior: smooth; }
 body {
   background-color: #ffffff;
   color: #1C1C1C;
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-weight: 300;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-heading), Georgia, serif;
   font-weight: 400;
 }
 
+/* Font utility classes */
+.font-heading  { font-family: var(--font-heading), Georgia, serif !important; }
+.font-script   { font-family: var(--font-script), cursive !important; }
+.font-display  { font-family: var(--font-display), sans-serif !important; }
+.font-body     { font-family: var(--font-body), system-ui, sans-serif !important; }
+
+/* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #FAF7F2; }
 ::-webkit-scrollbar-thumb { background: #E8E0D4; border-radius: 2px; }
 
+/* Ticker animation */
 @keyframes ticker {
-  0% { transform: translateX(0); }
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
 .animate-ticker {
   animation: ticker 25s linear infinite;
   will-change: transform;
+}
+
+/* Hover lift */
+.hover-lift {
+  transition: transform 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
 }

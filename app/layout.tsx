@@ -1,25 +1,35 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Bebas_Neue } from "next/font/google";
+import { Fraunces, Nunito, Caveat, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const playfair = Playfair_Display({
+// Speelse serif voor headings (karaktervol, warm, modern)
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-heading",
+  weight: ["300", "400", "500", "700", "900"],
   style: ["normal", "italic"],
 });
 
-const inter = Inter({
+// Rounded clean sans-serif voor body (zoals Avenir Next)
+const nunito = Nunito({
   subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["300", "400", "500", "600"],
+  variable: "--font-body",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
+// Handgeschreven voor accenten (zoals Themysion)
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-script",
+  weight: ["400", "500", "600", "700"],
+});
+
+// Bold display voor drop titels
 const bebas = Bebas_Neue({
   subsets: ["latin"],
-  variable: "--font-bebas",
+  variable: "--font-display",
   weight: ["400"],
 });
 
@@ -34,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="nl" className={`${playfair.variable} ${inter.variable} ${bebas.variable}`}>
+    <html lang="nl" className={`${fraunces.variable} ${nunito.variable} ${caveat.variable} ${bebas.variable}`}>
       <body>
         <Navbar />
         <main>{children}</main>
