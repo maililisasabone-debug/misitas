@@ -1,48 +1,21 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-serif: var(--font-playfair), Georgia, serif;
-  --font-display: var(--font-bebas), sans-serif;
-
-  --color-cream: #FAF7F2;
-  --color-clay: #C4956A;
-  --color-terracotta: #D4714A;
-  --color-soft-pink: #F5E6E0;
-  --color-pink: #E8C4B8;
-  --color-ink: #1C1C1C;
-  --color-border: #E8E0D4;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
   background-color: #ffffff;
   color: #1C1C1C;
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 300;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   font-family: var(--font-playfair), Georgia, serif;
   font-weight: 400;
-}
-
-.font-editorial {
-  font-family: var(--font-playfair), Georgia, serif !important;
-}
-
-.font-display {
-  font-family: var(--font-bebas), sans-serif !important;
-  letter-spacing: 0.05em;
 }
 
 ::-webkit-scrollbar { width: 4px; }
